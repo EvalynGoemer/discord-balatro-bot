@@ -1,6 +1,6 @@
 import re
 import praw
-from os import environ
+import os
 from jokers import jokers
 from Levenshtein import distance
 import time
