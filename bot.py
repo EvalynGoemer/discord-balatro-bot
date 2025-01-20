@@ -46,7 +46,7 @@ def main():
         print(f"Jokers from comment: {jokers_from_comment}")
         if len(jokers_from_comment) > 0:
             print(build_reply_with_jokers(jokers_from_comment))
-            if os.environ["SHOULD_REPLY"] == "true"
+            if os.environ["SHOULD_REPLY"] == "true":
                 try:
                     comment.reply(build_reply_with_jokers(jokers_from_comment))
                 except praw.exceptions.APIException as e:
