@@ -12,7 +12,7 @@ reddit = praw.Reddit(client_id=os.environ["REDDIT_CLIENT_ID"],
                      username=os.environ["REDDIT_USERNAME"])
 
 def parse_jokers_from_comment(comment):
-    return re.findall(r'\\\[\\\[([^][]+?)\\\]\\\]', comment)
+    return re.findall(r"[\\]?\[[\\]?\[([^][]+?)[\\]?\][\\]?\]", comment)
 
 def build_reply_with_jokers(jokers_from_comment):
     matches_per_joker = {}
