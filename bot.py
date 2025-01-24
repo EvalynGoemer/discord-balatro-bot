@@ -37,7 +37,7 @@ def get_item_label(value):
 
 def get_item_unlock(value):
     if value['key'].startswith("j_") or value['key'].startswith("v_"):
-        return f"- **To Unlock**: {value[0]['match']['unlock'] if 'unlock' in value[0]['match'] else 'Available by default'}\n\n"
+        return f"- **To Unlock**: {value['match']['unlock'] if 'unlock' in value['match'] else 'Available by default'}\n\n"
     else:
         return f"\n"
 
