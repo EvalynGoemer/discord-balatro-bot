@@ -62,7 +62,6 @@ def build_reply_with_items(items_from_comment):
     reply = ""
     for key, value in matches_per_item.items():
         value.sort(key=lambda x: x["distance"])
-        item_type = determine_item_type(key)
         reply += (
             f"[{value[0]['match']['name']}]({os.environ['FANDOM_LINK'] + value[0]['match']['name'].replace(' ', '_')})"
             f" ({get_item_label(key, value)})\n"
