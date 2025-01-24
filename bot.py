@@ -18,25 +18,25 @@ reddit = praw.Reddit(client_id=os.environ["REDDIT_CLIENT_ID"],
 def parse_items_from_comment(comment):
     return re.findall(r"[\\]?\[[\\]?\[([^][]+?)[\\]?\][\\]?\]", comment)
 
-def get_item_label(key, value):
-    if key.startswith("j_"):
+def get_item_label(value):
+    if value['key'].startswith("j_"):
         if (value['match']['rarity']):
             return f"{value['match']['rarity']} Joker"
         else:
             return "Common Joker"
-    elif key.startswith("bl_"):
+    elif value['key'].startswith("bl_"):
         return "Blind"
-    elif key.startswith("s_"):
+    elif value['key'].startswith("s_"):
         return "Spectral Card"
-    elif key.startswith("t_"):
+    elif value['key'].startswith("t_"):
         return "Tarot Card"
-    elif key.startswith("v_"):
+    elif value['key'].startswith("v_"):
         return "Voucher"
     else:
         return "Unknown"
 
-def get_item_unlock(key, value):
-    if key.startswith("j_") or key.startswith("v_"):
+def get_item_unlock(value):
+    if value['key'].startswith("j_") or value['key'].startswith("v_"):
         return f"- **To Unlock**: {value[0]['match']['unlock'] if 'unlock' in value[0]['match'] else 'Available by default'}\n\n"
     else:
         return f"\n"
@@ -56,7 +56,7 @@ def build_reply_with_items(items_from_comment):
             if item_distance <= int(os.environ["MAX_DISTANCE"]):
                 if not requested_item in matches_per_item:
                     matches_per_item[requested_item] = []
-                matches_per_item[requested_item].append({ "match": value, "distance": item_distance })
+                matches_per_item[requested_item].append({ "key": key, match": value, "distance": item_distance })
     levenshtein_end = time.time()
     print(f"Fuzzy string matching for all items took: {levenshtein_end - levenshtein_start} seconds")
     reply = ""
@@ -64,9 +64,9 @@ def build_reply_with_items(items_from_comment):
         value.sort(key=lambda x: x["distance"])
         reply += (
             f"[{value[0]['match']['name']}]({os.environ['FANDOM_LINK'] + value[0]['match']['name'].replace(' ', '_')})"
-            f" ({get_item_label(key, value)})\n"
+            f" ({get_item_label(value)})\n"
             f"- **Effect**: {value[0]['match']['text']}\n"
-            f"{get_item_unlock(key, value)}"
+            f"{get_item_unlock(value)}"
         )
     reply += '^(Data sourced directly from Balatro\'s localization files)'
 
