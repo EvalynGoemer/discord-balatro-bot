@@ -41,6 +41,20 @@ def get_item_unlock(value):
     else:
         return f"\n"
 
+def get_link(value):
+    if value["key"].startswith("j_"):
+        return os.environ['FANDOM_LINK'] + value["match"]["name"].replace(" ", "_")
+    elif value["key"].startswith("bl_"):
+        return os.environ['FANDOM_LINK'] + "Blinds_and_Antes"
+    elif value["key"].startswith("s_"):
+        return os.environ['FANDOM_LINK'] + "Spectral_Cards"
+    elif value["key"].startswith("t_"):
+        return os.environ['FANDOM_LINK'] + "Tarot_Cards"
+    elif value["key"].startswith("v_"):
+        return os.environ['FANDOM_LINK'] + "Vouchers"
+    else:
+        return "Unknown"
+
 def format_item(item):
     item = item.lower().strip()
     if item.startswith("the "):
@@ -63,7 +77,7 @@ def build_reply_with_items(items_from_comment):
     for key, value in matches_per_item.items():
         value.sort(key=lambda x: x["distance"])
         reply += (
-            f"[{value[0]['match']['name']}]({os.environ['FANDOM_LINK'] + value[0]['match']['name'].replace(' ', '_')})"
+            f"[{value[0]['match']['name']}]({get_link(value[0])})"
             f" ({get_item_label(value[0])})\n"
             f"- **Effect**: {value[0]['match']['text']}\n"
             f"{get_item_unlock(value[0])}"
