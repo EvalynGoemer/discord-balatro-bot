@@ -16,7 +16,7 @@ reddit = praw.Reddit(client_id=os.environ["REDDIT_CLIENT_ID"],
                      username=os.environ["REDDIT_USERNAME"])
 
 def parse_items_from_comment(comment):
-    return re.findall(r"[\\]?\[[\\]?\[([^][]+?)[\\]?\][\\]?\]", comment)
+    return re.findall(r"[\\]?\[[\\]?\[([^][\\]+?)[\\]?\][\\]?\]", comment)
 
 def get_item_label(value):
     if value["key"].startswith("j_"):

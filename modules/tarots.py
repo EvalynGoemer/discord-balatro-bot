@@ -1,3 +1,4 @@
+# Pulled directly from Balatro's localization files, and then edited to resolve references/remove unwanted annotations
 tarots = {
     "t_chariot": {
         "name": "The Chariot",

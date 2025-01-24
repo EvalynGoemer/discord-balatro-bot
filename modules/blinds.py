@@ -1,3 +1,4 @@
+# Pulled directly from Balatro's localization files, and then edited to resolve references/remove unwanted annotations
 blinds = {
     "bl_arm": {
         "name": "The Arm",
@@ -73,7 +74,7 @@ blinds = {
     },
     "bl_ox": {
         "name": "The Ox",
-        "text": "Playing a #1# sets money to $0"
+        "text": "Playing a [most-played hand] sets money to $0"
     },
     "bl_pillar": {
         "name": "The Pillar",
