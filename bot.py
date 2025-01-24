@@ -64,9 +64,9 @@ def build_reply_with_items(items_from_comment):
         value.sort(key=lambda x: x["distance"])
         reply += (
             f"[{value[0]['match']['name']}]({os.environ['FANDOM_LINK'] + value[0]['match']['name'].replace(' ', '_')})"
-            f" ({get_item_label(value)})\n"
+            f" ({get_item_label(value[0])})\n"
             f"- **Effect**: {value[0]['match']['text']}\n"
-            f"{get_item_unlock(value)}"
+            f"{get_item_unlock(value[0])}"
         )
     reply += '^(Data sourced directly from Balatro\'s localization files)'
 
