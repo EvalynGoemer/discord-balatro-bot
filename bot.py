@@ -32,7 +32,7 @@ def get_item_label(key, value):
         return "Tarot Card"
     elif key.startswith("v_"):
         return "Voucher"
-    else
+    else:
         return "Unknown"
 
 def get_item_unlock(key, value):
