@@ -19,24 +19,24 @@ def parse_items_from_comment(comment):
     return re.findall(r"[\\]?\[[\\]?\[([^][]+?)[\\]?\][\\]?\]", comment)
 
 def get_item_label(value):
-    if value['key'].startswith("j_"):
-        if (value['match']['rarity']):
+    if value["key"].startswith("j_"):
+        if ("rarity" in value["match"]):
             return f"{value['match']['rarity']} Joker"
         else:
             return "Common Joker"
-    elif value['key'].startswith("bl_"):
+    elif value["key"].startswith("bl_"):
         return "Blind"
-    elif value['key'].startswith("s_"):
+    elif value["key"].startswith("s_"):
         return "Spectral Card"
-    elif value['key'].startswith("t_"):
+    elif value["key"].startswith("t_"):
         return "Tarot Card"
-    elif value['key'].startswith("v_"):
+    elif value["key"].startswith("v_"):
         return "Voucher"
     else:
         return "Unknown"
 
 def get_item_unlock(value):
-    if value['key'].startswith("j_") or value['key'].startswith("v_"):
+    if value["key"].startswith("j_") or value["key"].startswith("v_"):
         return f"- **To Unlock**: {value['match']['unlock'] if 'unlock' in value['match'] else 'Available by default'}\n\n"
     else:
         return f"\n"
