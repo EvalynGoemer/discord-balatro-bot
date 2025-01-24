@@ -56,7 +56,7 @@ def build_reply_with_items(items_from_comment):
             if item_distance <= int(os.environ["MAX_DISTANCE"]):
                 if not requested_item in matches_per_item:
                     matches_per_item[requested_item] = []
-                matches_per_item[requested_item].append({ "key": key, match": value, "distance": item_distance })
+                matches_per_item[requested_item].append({ "key": key, "match": value, "distance": item_distance })
     levenshtein_end = time.time()
     print(f"Fuzzy string matching for all items took: {levenshtein_end - levenshtein_start} seconds")
     reply = ""
