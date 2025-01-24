@@ -19,18 +19,18 @@ def parse_items_from_comment(comment):
     return re.findall(r"[\\]?\[[\\]?\[([^][]+?)[\\]?\][\\]?\]", comment)
 
 def get_item_label(key, value):
-    if (key.startswith("j_"):
+    if key.startswith("j_"):
         if (value['match']['rarity']):
             return f"{value['match']['rarity']} Joker"
         else:
             return "Common Joker"
-    elif (key.startswith("bl_"):
+    elif key.startswith("bl_"):
         return "Blind"
-    elif (key.startswith("s_"):
+    elif key.startswith("s_"):
         return "Spectral Card"
-    elif (key.startswith("t_"):
+    elif key.startswith("t_"):
         return "Tarot Card"
-    elif (key.startswith("v_"):
+    elif key.startswith("v_"):
         return "Voucher"
     else
         return "Unknown"
