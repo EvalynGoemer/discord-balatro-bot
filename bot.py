@@ -82,7 +82,7 @@ def build_reply_with_items(items_from_comment):
             f"- **Effect**: {value[0]['match']['text']}\n"
             f"{get_item_unlock(value[0])}"
         )
-    reply += '^(Data sourced directly from Balatro\'s localization files)'
+    reply += '^(Data pulled directly from Balatro\'s source)'
 
     return reply
 
