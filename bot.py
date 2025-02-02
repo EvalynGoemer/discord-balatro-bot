@@ -74,6 +74,7 @@ def build_reply_with_items(items_from_comment):
     levenshtein_end = time.time()
     print(f"Fuzzy string matching for all items took: {levenshtein_end - levenshtein_start} seconds")
     reply = ""
+    matches = 0
     for key, value in matches_per_item.items():
         value.sort(key=lambda x: x["distance"])
         reply += (
@@ -82,7 +83,9 @@ def build_reply_with_items(items_from_comment):
             f"- **Effect**: {value[0]['match']['text']}\n"
             f"{get_item_unlock(value[0])}"
         )
-    reply += '^(Data pulled directly from Balatro\'s source)'
+        matches += 1
+    if (matches > 0):
+        reply += '^(Data pulled directly from Balatro\'s source)'
 
     return reply
 
@@ -93,10 +96,11 @@ def main():
         items_from_comment = parse_items_from_comment(comment.body)
         print(f"items from comment: {items_from_comment}")
         if len(items_from_comment) > 0:
-            print(build_reply_with_items(items_from_comment))
             if os.environ["SHOULD_REPLY"] == "true":
                 try:
-                    comment.reply(build_reply_with_items(items_from_comment))
+                    reply = build_reply_with_items(items_from_comment)
+                    if (len(reply) > 0):
+                        comment.reply(reply)
                 except praw.exceptions.APIException as e:
                     print(e)
                     continue
