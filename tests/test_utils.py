@@ -15,11 +15,11 @@ def test_parse_items_from_comment():
 
 def test_build_reply_with_items():
     os.environ["FANDOM_LINK"] = "http://localhost:8080/"
-    os.environ["MAX_DISTANCE"] = "4"
+    os.environ["MAX_DISTANCE"] = "3"
     assert ("[Showman](http://localhost:8080/Showman) (Uncommon Joker)" in build_reply_with_items(["showman"])) is True
     assert ("[Showman](http://localhost:8080/Showman) (Uncommon Joker)" in build_reply_with_items(["showman", "perkeo"])
             and "[Perkeo](http://localhost:8080/Perkeo) (Legendary Joker)" in build_reply_with_items(["showman", "perkeo"])) is True
-    assert ("[Cavendish](http://localhost:8080/Cavendish) (Common Joker)" in build_reply_with_items(["cavdish"])) is True
+    assert ("[Cavendish](http://localhost:8080/Cavendish) (Common Joker)" in build_reply_with_items(["cavedise"])) is True
     assert ("" == build_reply_with_items([]))
     assert ("[Overstock](http://localhost:8080/Vouchers) (Voucher)" in build_reply_with_items(["overstock"])) is True
     assert ("[The Magician](http://localhost:8080/Tarot_Cards) (Tarot Card)" in build_reply_with_items(["magician"])) is True
