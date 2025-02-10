@@ -512,7 +512,7 @@ jokers = {
     "j_rocket": {
         "name": "Rocket",
         "rarity": "Uncommon",
-        "text": "Earn $1 at end of round Payout increases by $2 when Boss Blind is defeated"
+        "text": "Earn $1 at end of round. Payout increases by $2 when Boss Blind is defeated"
     },
     "j_rough_gem": {
         "name": "Rough Gem",

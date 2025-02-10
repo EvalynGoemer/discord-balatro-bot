@@ -4,7 +4,6 @@ import os
 def test_parse_items_from_comment():
     assert ["baron"] == parse_items_from_comment("Use [[baron]]")
     assert ["baron", "mime"] == parse_items_from_comment("Use [[baron]] and [[mime]]")
-    assert ["baron", "mime"] == parse_items_from_comment("Use [[baron]] and [[mime]]")
     assert ["baron", "mime"] == parse_items_from_comment("Use \\[\\[baron\\]\\] and \\[\\[mime\\]\\]")
     assert ["baron", "mime"] == parse_items_from_comment("Use \\[[baron]] and \\[[mime]]")
     assert ["mime"] == parse_items_from_comment("Use [[baron] and [[mime]]")
