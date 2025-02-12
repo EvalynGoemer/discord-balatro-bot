@@ -3,6 +3,7 @@ from modules.blinds import blinds
 from modules.spectrals import spectrals
 from modules.tarots import tarots
 from modules.vouchers import vouchers
+from modules.planets import planets
 from Levenshtein import distance
 import time
 import os
@@ -11,7 +12,7 @@ import re
 def build_reply_with_items(items_from_comment):
     matches_per_item = {}
     levenshtein_start = time.time()
-    for key, value in (jokers | blinds | spectrals | tarots | vouchers).items():
+    for key, value in (jokers | blinds | spectrals | tarots | vouchers | planets).items():
         for requested_item in items_from_comment:
             item_distance = distance(format_item(value["name"]), format_item(requested_item), score_cutoff=int(os.environ["MAX_DISTANCE"]))
             if item_distance <= int(os.environ["MAX_DISTANCE"]):
@@ -54,6 +55,8 @@ def get_item_label(value):
         return "Tarot Card"
     elif value["key"].startswith("v_"):
         return "Voucher"
+    elif value["key"].startswith("p_"):
+        return "Planet Card"
     else:
         return "Unknown"
 
@@ -75,6 +78,8 @@ def get_link(value):
         return os.environ['FANDOM_LINK'] + "Tarot_Cards"
     elif value["key"].startswith("v_"):
         return os.environ['FANDOM_LINK'] + "Vouchers"
+    elif value["key"].startswith("p_"):
+            return os.environ['FANDOM_LINK'] + "Planet_Cards"
     else:
         return "Unknown"
 
