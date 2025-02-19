@@ -1,5 +1,5 @@
 # balatro-joker-bot
-A Reddit bot that monitors a subreddit and replies with Balatro info to Reddit comments that contain a Balatro Joker/Tarot Card/Spectral Card/Voucher/Blind in double square brackets. Inspired by u/balatro-bot.
+A Reddit bot that monitors a subreddit and replies with Balatro info to Reddit comments that contain a Balatro Joker/Tarot Card/Spectral Card/Planet Card/Voucher/Blind in double square brackets. Inspired by u/balatro-bot.
 
 The bot uses PRAW's [Subreddit stream](https://praw.readthedocs.io/en/stable/code_overview/other/subredditstream.html) feature to observe and reply to comments in nearly real-time. It uses fuzzy string matching via Levenshtein distance to get the closest Joker/Tarot/etc. and remove the need for exact spelling.
 
