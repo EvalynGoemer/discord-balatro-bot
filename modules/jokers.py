@@ -2,7 +2,7 @@
 jokers = {
     "j_8_ball": {
         "name": "8 Ball",
-        "text": "1 in 2 chance for each played 8 to create a Tarot card when scored (Must have room)"
+        "text": "1 in 4 chance for each played 8 to create a Tarot card when scored (Must have room)"
     },
     "j_abstract": {
         "name": "Abstract Joker",
