@@ -122,6 +122,7 @@ jokers = {
     },
     "j_castle": {
         "name": "Castle",
+        "rarity": "Uncommon",
         "text": "This Joker gains +3 Chips per discarded [suit] card, suit changes every round"
     },
     "j_cavendish": {
