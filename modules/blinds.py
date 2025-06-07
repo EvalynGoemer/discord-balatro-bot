@@ -106,7 +106,7 @@ blinds = {
     },
     "bl_wheel": {
         "name": "The Wheel",
-        "text": " in 7 cards get drawn face down"
+        "text": "1 in 7 cards get drawn face down"
     },
     "bl_window": {
         "name": "The Window",
