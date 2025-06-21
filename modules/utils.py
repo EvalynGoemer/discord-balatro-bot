@@ -34,7 +34,7 @@ def build_reply_with_items(items_from_comment):
         )
         matches += 1
     if (matches > 0):
-        reply += '[^(Source)](https://github.com/AlecM33/balatro-joker-bot)'
+        reply += '[(Source)](<https://github.com/EvalynGoemer/discord-balatro-bot>)'
 
     return reply
 
