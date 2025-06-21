@@ -7,7 +7,7 @@ The bot uses [discord.py](https://pypi.org/project/discord.py/) observe and repl
 
 When ran you need to set the following ENV vars
 - MAX_DISTANCE=2
-- WIKI_LINK=https://balatrogame.fandom.com/wiki/ 
+- WIKI_LINK=https://balatrowiki.org/w/
 - TOKEN=YOUR DISCORD BOT TOKEN
 
 The bot also needs the message content intent enabled.
