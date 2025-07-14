@@ -9,6 +9,9 @@ class MyClient(discord.Client):
     async def on_message(self, message):
         if message.author == self.user:
             return
+        if message.author.bot == True:
+            return
+            
         items_from_comment = parse_items_from_comment(message.content)
         reply = build_reply_with_items(items_from_comment)
         if (len(reply) > 0):
